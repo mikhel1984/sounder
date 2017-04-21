@@ -31,9 +31,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import Sounder 1.0
+
 
 Page {
     id: page
+
+    property string hello: "Hello Sailfish"
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
@@ -48,6 +52,12 @@ Page {
                 text: qsTr("Show Page 2")
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
+        }
+
+        Tuner {
+            id: tuner
+
+            onNoteChanged: hello = tuner.note + " " + tuner.frequency
         }
 
         // Tell SilicaFlickable the height of its content.
@@ -65,9 +75,10 @@ Page {
             }
             Label {
                 x: Theme.horizontalPageMargin
-                text: qsTr("Hello Sailors")
+                text: hello
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
+
             }
         }
     }

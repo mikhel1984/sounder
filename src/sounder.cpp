@@ -33,7 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
-
+#include "tuner.h"
 
 int main(int argc, char *argv[])
 {
@@ -46,5 +46,15 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    return SailfishApp::main(argc, argv);
+    //return SailfishApp::main(argc, argv);
+
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+    QScopedPointer<QQuickView> v(SailfishApp::createView());
+
+    qmlRegisterType<Tuner>("Sounder", 1, 0, "Tuner");
+
+    v->setSource(SailfishApp::pathTo("qml/sounder.qml"));
+    v->show();
+
+    return app->exec();
 }

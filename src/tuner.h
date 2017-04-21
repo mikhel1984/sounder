@@ -10,13 +10,17 @@ class AudioInfo;
 class Tuner : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString note READ getNote NOTIFY noteChanged)
+    Q_PROPERTY(int shift READ getShift NOTIFY noteChanged)
+    Q_PROPERTY(qreal frequency READ getFrequency NOTIFY noteChanged)
+
 public:
     explicit Tuner(QObject *parent = 0);
     ~Tuner();
 
-    Q_INVOKABLE QString getNote();
-    Q_INVOKABLE int     getShift();
-    Q_INVOKABLE qreal   getFrequency();
+    QString getNote();
+    int     getShift();
+    qreal   getFrequency();
 
 private:
     QAudioDeviceInfo deviceInfo;
@@ -27,10 +31,10 @@ private:
 
 
 signals:
-    void updated();
+    void noteChanged();
 
 private slots:
-    void onUpdate();
+    void retranslate();
 
 };
 

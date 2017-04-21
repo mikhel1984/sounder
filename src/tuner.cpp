@@ -22,9 +22,13 @@ Tuner::Tuner(QObject *parent)
         format = info.nearestFormat(format);
     }
 
+    qDebug() << "Rate: " << format.sampleRate();
+    qDebug() << "Channels: " << format.channelCount();
+    qDebug() << "Size: " << format.sampleSize();
+
     // audio data analizator
     audioInfo = new AudioInfo(format, this);
-    connect(audioInfo, SIGNAL(update()), this, SLOT(onUpdate()));
+    connect(audioInfo, SIGNAL(update()), this, SLOT(retranslate()));
 
     // create audio input
     audioInput = new QAudioInput(deviceInfo, format, this);
@@ -37,8 +41,8 @@ Tuner::~Tuner() {
     if(audioInfo) delete audioInfo;
 }
 
-void Tuner::onUpdate() {
-    emit updated();
+void Tuner::retranslate() {
+    emit noteChanged();
 }
 
 
