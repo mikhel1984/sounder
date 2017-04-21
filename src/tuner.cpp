@@ -49,3 +49,4 @@ void Tuner::retranslate() {
 QString Tuner::getNote()     { return audioInfo->getNote(); }
 int     Tuner::getShift()    { return audioInfo->getShift(); }
 qreal   Tuner::getFrequency(){ return audioInfo->getFrequency(); }
+qreal   Tuner::getLevel()    { return audioInfo->level(); }

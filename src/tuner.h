@@ -13,6 +13,7 @@ class Tuner : public QObject
     Q_PROPERTY(QString note READ getNote NOTIFY noteChanged)
     Q_PROPERTY(int shift READ getShift NOTIFY noteChanged)
     Q_PROPERTY(qreal frequency READ getFrequency NOTIFY noteChanged)
+    Q_PROPERTY(qreal level READ getLevel NOTIFY noteChanged)
 
 public:
     explicit Tuner(QObject *parent = 0);
@@ -21,6 +22,7 @@ public:
     QString getNote();
     int     getShift();
     qreal   getFrequency();
+    qreal   getLevel();
 
 private:
     QAudioDeviceInfo deviceInfo;

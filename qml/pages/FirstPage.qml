@@ -37,7 +37,6 @@ import Sounder 1.0
 Page {
     id: page
 
-    property string hello: "Hello Sailfish"
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.All
@@ -57,7 +56,12 @@ Page {
         Tuner {
             id: tuner
 
-            onNoteChanged: hello = tuner.note + " " + tuner.frequency
+            onNoteChanged: {
+                row1.text = tuner.note
+                row2.text = tuner.frequency
+                row3.text = tuner.shift
+                row4.text = tuner.level
+            }
         }
 
         // Tell SilicaFlickable the height of its content.
@@ -74,12 +78,27 @@ Page {
                 title: qsTr("UI Template")
             }
             Label {
+                id: row1
                 x: Theme.horizontalPageMargin
-                text: hello
+                //text: ""
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
+            }
+            Label {
+                id: row2
+                x: Theme.horizontalPageMargin
+                //text: ""
+            }
+            Label {
+                id: row3
+                x: Theme.horizontalPageMargin
 
             }
+            Label {
+                id: row4
+                x: Theme.horizontalPageMargin
+            }
+
         }
     }
 }
