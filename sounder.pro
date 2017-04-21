@@ -14,7 +14,12 @@ TARGET = sounder
 
 CONFIG += sailfishapp
 
-SOURCES += src/sounder.cpp
+SOURCES += src/sounder.cpp \
+    src/soundanalize.cpp \
+    src/audioinfo.cpp \
+    src/tuner.cpp
+
+QT += multimedia
 
 OTHER_FILES += qml/sounder.qml \
     qml/cover/CoverPage.qml \
@@ -37,3 +42,8 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/sounder-de.ts
+
+HEADERS += \
+    src/soundanalize.h \
+    src/audioinfo.h \
+    src/tuner.h
