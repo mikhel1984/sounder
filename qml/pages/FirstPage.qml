@@ -58,9 +58,9 @@ Page {
 
             onNoteChanged: {
                 row1.text = tuner.note
-                row2.text = tuner.frequency
+                row2.text = Math.round(100*tuner.frequency)/100
                 row3.text = tuner.shift
-                row4.text = tuner.level
+                row4.text = Math.round(100*tuner.level)/100
             }
         }
 
@@ -80,23 +80,30 @@ Page {
             Label {
                 id: row1
                 x: Theme.horizontalPageMargin
-                //text: ""
+                text: "Play"
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
             Label {
                 id: row2
                 x: Theme.horizontalPageMargin
-                //text: ""
+                font.italic: true
+                anchors.horizontalCenter: column.horizontalCenter
+
+                text: "0"
             }
             Label {
                 id: row3
                 x: Theme.horizontalPageMargin
 
+                text: "0"
+
             }
             Label {
                 id: row4
                 x: Theme.horizontalPageMargin
+
+                text: "0"
             }
 
         }

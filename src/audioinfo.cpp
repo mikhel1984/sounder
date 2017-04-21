@@ -3,6 +3,8 @@
 #include "audioinfo.h"
 #include "soundanalize.h"
 
+#define NOIZE_LEVEL 0.05
+
 AudioInfo::AudioInfo(const QAudioFormat &format, QObject *parent)
     :   QIODevice(parent)
     ,   m_format(format)
@@ -115,7 +117,8 @@ qint64 AudioInfo::writeData(const char *data, qint64 len)
         maxValue = qMin(maxValue, m_maxAmplitude);
         m_level = qreal(maxValue) / m_maxAmplitude;
 
-        analizator->transform(buffer, numSamples);
+        if(m_level > NOIZE_LEVEL)
+            analizator->transform(buffer, numSamples);
     }
 
     emit update();
