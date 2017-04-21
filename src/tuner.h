@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QAudioDeviceInfo>
 #include <QAudioInput>
-#include <QByteArray>
 
 class AudioInfo;
 
@@ -25,16 +24,14 @@ private:
 
     AudioInfo* audioInfo;
     QAudioInput* audioInput;
-    QIODevice* _input;
-    QByteArray buffer;
 
 
 signals:
-
-public slots:
+    void updated();
 
 private slots:
-    void readMore();
+    void onUpdate();
+
 };
 
 #endif // TUNER_H

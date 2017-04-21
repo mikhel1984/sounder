@@ -7,8 +7,6 @@ Tuner::Tuner(QObject *parent)
     , deviceInfo(QAudioDeviceInfo::defaultInputDevice())
     , audioInfo(0)
     , audioInput(0)
-    , _input(0)
-    , buffer(BUFFER_SIZE, 0)
 {
     // audio initialization
     format.setSampleRate(8000);
@@ -26,7 +24,7 @@ Tuner::Tuner(QObject *parent)
 
     // audio data analizator
     audioInfo = new AudioInfo(format, this);
-    // connect signals...
+    connect(audioInfo, SIGNAL(update()), this, SLOT(onUpdate()));
 
     // create audio input
     audioInput = new QAudioInput(deviceInfo, format, this);
@@ -39,15 +37,10 @@ Tuner::~Tuner() {
     if(audioInfo) delete audioInfo;
 }
 
-void Tuner::readMore() {
-    if(!audioInput) return;
-
-    qint64 len = audioInput->bytesReady();
-    if(len > BUFFER_SIZE) len = BUFFER_SIZE;
-
-    qint64 l = _input->read(buffer.data(), len);
-    if(l > 0) audioInfo->write(buffer.constData(), l);
+void Tuner::onUpdate() {
+    emit updated();
 }
+
 
 QString Tuner::getNote()     { return audioInfo->getNote(); }
 int     Tuner::getShift()    { return audioInfo->getShift(); }
