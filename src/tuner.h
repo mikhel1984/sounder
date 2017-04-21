@@ -12,8 +12,12 @@ class Tuner : public QObject
 {
     Q_OBJECT
 public:
-    Tuner(QObject *parent = 0);
+    explicit Tuner(QObject *parent = 0);
     ~Tuner();
+
+    Q_INVOKABLE QString getNote();
+    Q_INVOKABLE int     getShift();
+    Q_INVOKABLE qreal   getFrequency();
 
 private:
     QAudioDeviceInfo deviceInfo;

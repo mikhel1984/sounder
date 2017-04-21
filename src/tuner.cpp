@@ -48,3 +48,7 @@ void Tuner::readMore() {
     qint64 l = _input->read(buffer.data(), len);
     if(l > 0) audioInfo->write(buffer.constData(), l);
 }
+
+QString Tuner::getNote()     { return audioInfo->getNote(); }
+int     Tuner::getShift()    { return audioInfo->getShift(); }
+qreal   Tuner::getFrequency(){ return audioInfo->getFrequency(); }

@@ -24,6 +24,10 @@ public:
     qint64 readData(char *data, qint64 maxlen);
     qint64 writeData(const char *data, qint64 len);
 
+    QString getNote();
+    int     getShift();
+    qreal   getFrequency();
+
 
 private:
     const QAudioFormat m_format;

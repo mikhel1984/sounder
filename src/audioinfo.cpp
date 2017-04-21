@@ -121,3 +121,7 @@ qint64 AudioInfo::writeData(const char *data, qint64 len)
     emit update();
     return len;
 }
+
+QString AudioInfo::getNote()      { return analizator->getNote(); }
+int     AudioInfo::getShift()     { return analizator->getShift(); }
+qreal   AudioInfo::getFrequency() { return analizator->getFrequency(); }
