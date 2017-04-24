@@ -39,7 +39,7 @@ Page {
 
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
@@ -66,6 +66,22 @@ Page {
 
             onNoteChanged: {
                 note.text = tuner.note
+
+                switch(tuner.shift) {
+                case -1:
+                    upperArrow.signaling = false
+                    lowerArrow.signaling = true
+                    break;
+                case 0:
+                    upperArrow.signaling = false
+                    lowerArrow.signaling = false
+                    break;
+                case 1:
+                    upperArrow.signaling = true
+                    lowerArrow.signaling = false
+                    break;
+                }
+
                 //row1.text = tuner.note
                 //row2.text = Math.round(100*tuner.frequency)/100
                 //row3.text = tuner.shift
@@ -80,59 +96,39 @@ Page {
             width: parent.width/4
             height: parent.height/8
 
-            //x: (parent.width - note.width)*0.5
-            //y: (parent.height - note.height)*0.5
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
 
             color: "white"
+            font.bold: true
             font.pixelSize: Theme.fontSizeExtraLarge
+            horizontalAlignment: Text.AlignHCenter
         }
 
-        // Tell SilicaFlickable the height of its content.
-        //contentHeight: column.height
+        Arrow {
+            id: upperArrow
 
-        // Place our content in a Column.  The PageHeader is always placed at the top
-        // of the page, followed by our content.
-        /*
-        Column {
-            id: column
+            upper: true
 
-            width: page.width
-            spacing: Theme.paddingLarge
-            PageHeader {
-                title: qsTr("UI Template")
-            }
-            Label {
-                id: row1
-                x: Theme.horizontalPageMargin
-                text: "Play"
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }
-            Label {
-                id: row2
-                x: Theme.horizontalPageMargin
-                font.italic: true
-                anchors.horizontalCenter: column.horizontalCenter
+            width: parent.width / 5
+            height: parent.height / 6
 
-                text: "0"
-            }
-            Label {
-                id: row3
-                x: Theme.horizontalPageMargin
-
-                text: "0"
-
-            }
-            Label {
-                id: row4
-                x: Theme.horizontalPageMargin
-
-                text: "0"
-            }
+            x: (parent.width-upperArrow.width) / 2
+            y: parent.height / 8
         }
-        */
+
+        Arrow {
+            id: lowerArrow
+
+            upper: false
+
+            width: parent.width / 5
+            height: parent.height / 6
+
+            x: (parent.width - lowerArrow.width) / 2
+            y: parent.height - lowerArrow.height - parent.height / 8
+        }
+
     }
 }
 

@@ -49,4 +49,9 @@ HEADERS += \
     src/tuner.h
 
 DISTFILES += \
-    qml/pages/head_1.jpg
+    qml/pages/head_1.jpg \
+    qml/pages/arrow_red.png \
+    qml/pages/arrow_transparent.png \
+    qml/pages/Arrow.qml \
+    qml/pages/arrow_red_d.png \
+    qml/pages/arrow_transparent_d.png
