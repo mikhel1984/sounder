@@ -47,3 +47,6 @@ HEADERS += \
     src/soundanalize.h \
     src/audioinfo.h \
     src/tuner.h
+
+DISTFILES += \
+    qml/pages/head_1.jpg

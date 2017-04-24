@@ -53,22 +53,48 @@ Page {
             }
         }
 
+        Image {
+            source: "head_1.jpg"
+            fillMode: Image.PreserveAspectFit
+
+            anchors.fill: parent
+            z: -1
+        }
+
         Tuner {
             id: tuner
 
             onNoteChanged: {
-                row1.text = tuner.note
-                row2.text = Math.round(100*tuner.frequency)/100
-                row3.text = tuner.shift
-                row4.text = Math.round(100*tuner.level)/100
+                note.text = tuner.note
+                //row1.text = tuner.note
+                //row2.text = Math.round(100*tuner.frequency)/100
+                //row3.text = tuner.shift
+                //row4.text = Math.round(100*tuner.level)/100
             }
+
+        }
+
+        Text {
+            id: note
+
+            width: parent.width/4
+            height: parent.height/8
+
+            //x: (parent.width - note.width)*0.5
+            //y: (parent.height - note.height)*0.5
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            color: "white"
+            font.pixelSize: Theme.fontSizeExtraLarge
         }
 
         // Tell SilicaFlickable the height of its content.
-        contentHeight: column.height
+        //contentHeight: column.height
 
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
+        /*
         Column {
             id: column
 
@@ -105,8 +131,8 @@ Page {
 
                 text: "0"
             }
-
         }
+        */
     }
 }
 
