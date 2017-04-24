@@ -33,6 +33,8 @@ private:
     const QAudioFormat m_format;
     quint16 m_maxAmplitude;
     qreal m_level;
+    int channelBytes;
+    int sampleBytes;
 
     qreal *buffer;
 

@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVector>
+//#include <QQueue>
 
 // Class perform Fourier transform and looking for correlation
 class SoundAnalize
@@ -44,6 +45,9 @@ private:
 
     // searching maximum value
     int  findMaximum();
+    // smoothing
+    //QQueue<int> filter;
+    //int smooth(int val);
 };
 
 #endif // SOUNDANALIZE_H

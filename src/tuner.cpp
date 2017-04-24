@@ -32,6 +32,7 @@ Tuner::Tuner(QObject *parent)
 
     // create audio input
     audioInput = new QAudioInput(deviceInfo, format, this);
+
     audioInfo->start();
     audioInput->start(audioInfo);
 

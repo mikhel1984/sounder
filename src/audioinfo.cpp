@@ -13,6 +13,10 @@ AudioInfo::AudioInfo(const QAudioFormat &format, QObject *parent)
     ,   buffer(new qreal[BUFFER_SIZE])
 
 {
+    Q_ASSERT(m_format.sampleSize() % 8 == 0);
+    channelBytes = m_format.sampleSize() / 8;
+    sampleBytes = m_format.channelCount() * channelBytes;
+
     analizator = new SoundAnalize(m_format.sampleRate());
 
     switch (m_format.sampleSize()) {
@@ -73,9 +77,7 @@ qint64 AudioInfo::readData(char *data, qint64 maxlen)
 qint64 AudioInfo::writeData(const char *data, qint64 len)
 {
     if (m_maxAmplitude) {
-        Q_ASSERT(m_format.sampleSize() % 8 == 0);
-        const int channelBytes = m_format.sampleSize() / 8;
-        const int sampleBytes = m_format.channelCount() * channelBytes;
+
         Q_ASSERT(len % sampleBytes == 0);
         const int numSamples = len / sampleBytes;
 
@@ -119,7 +121,9 @@ qint64 AudioInfo::writeData(const char *data, qint64 len)
 
         if(m_level > NOIZE_LEVEL)
             analizator->transform(buffer, numSamples);
+
     }
+
 
     emit update();
     return len;

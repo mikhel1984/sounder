@@ -3,6 +3,7 @@
 
 #define NOTE_SIZE 40
 #define EU_NOTES 12
+#define DEPTH 5
 
 #define Pi 3.1415926535897932384626433832795028
 
@@ -43,16 +44,17 @@ void SoundAnalize::transform(qreal *data, unsigned n) {
     for(int i = 0; i < notes.size(); ++i) {
         qreal freq = notes.at(i)->frequency;
         arr[i].image = arr[i].real = 0.0;
-        //qreal argument = 0;
+
         freq *= factor;
-        for(unsigned t = 0; t < n; ++t) {
-            //argument = factor * freq * t;
+        for(unsigned t = 0; t < n; ++t) {            
             arr[i].real += data[t] * qCos(freq*t);
             arr[i].image += data[t] * qSin(freq*t);
         }
     }
 
     lastNote = findMaximum();
+
+    //lastNote = smooth(lastNote);
 }
 
 int SoundAnalize::findMaximum() {
@@ -69,6 +71,19 @@ int SoundAnalize::findMaximum() {
 
     return res;
 }
+/*
+int SoundAnalize::smooth(int val) {
+    filter.enqueue(val);
+    int f_size = filter.size();
+    if(f_size > DEPTH) filter.dequeue();
+
+    int sum = 0;
+    foreach(int v, filter) {
+        sum += v;
+    }
+
+    return int(sum / f_size);
+}*/
 
 
 
