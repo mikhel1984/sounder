@@ -112,8 +112,8 @@ Page {
 
             upper: true
 
-            width: parent.width / 5
-            height: parent.height / 6
+            width: Math.floor(parent.width * 0.4)
+            height: Math.floor(parent.height / 6)
 
             x: (parent.width-upperArrow.width) / 2
             y: parent.height / 8
@@ -124,8 +124,8 @@ Page {
 
             upper: false
 
-            width: parent.width / 5
-            height: parent.height / 6
+            width: Math.floor(parent.width * 0.4)
+            height: Math.floor(parent.height / 6)
 
             x: (parent.width - lowerArrow.width) / 2
             y: parent.height - lowerArrow.height - parent.height / 8
