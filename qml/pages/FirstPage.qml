@@ -66,6 +66,8 @@ Page {
 
             onNoteChanged: {
                 note.text = tuner.note
+                note.color = tuner.shift == 0 ? "green" : "white"
+                pegManager.updatePegs(tuner.frequency)
 
                 switch(tuner.shift) {
                 case -1:
@@ -127,6 +129,14 @@ Page {
 
             x: (parent.width - lowerArrow.width) / 2
             y: parent.height - lowerArrow.height - parent.height / 8
+        }
+
+        PegManager {
+            id: pegManager
+
+            head: parent
+
+            Component.onCompleted: pegManager.addPegs()
         }
 
     }

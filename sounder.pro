@@ -54,4 +54,9 @@ DISTFILES += \
     qml/pages/arrow_transparent.png \
     qml/pages/Arrow.qml \
     qml/pages/arrow_red_d.png \
-    qml/pages/arrow_transparent_d.png
+    qml/pages/arrow_transparent_d.png \
+    qml/pages/Peg.qml \
+    qml/pages/marks_green.png \
+    qml/pages/marks_red.png \
+    qml/pages/marks_transparent.png \
+    qml/pages/PegManager.qml
