@@ -46,11 +46,13 @@ Page {
         anchors.fill: parent
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+
         PullDownMenu {
+            /*
             MenuItem {
-                text: qsTr("Show Page 2")
+                text: qsTr("Play guitar notes")
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
-            }
+            }*/
         }
 
         Image {
@@ -83,11 +85,8 @@ Page {
                     lowerArrow.signaling = false
                     break;
                 }
+                soundLevel.volume = tuner.level
 
-                //row1.text = tuner.note
-                //row2.text = Math.round(100*tuner.frequency)/100
-                //row3.text = tuner.shift
-                //row4.text = Math.round(100*tuner.level)/100
             }
 
         }
@@ -103,7 +102,7 @@ Page {
 
             color: "white"
             font.bold: true
-            font.pixelSize: Theme.fontSizeExtraLarge
+            font.pixelSize: Theme.fontSizeExtraLarge * 2
             horizontalAlignment: Text.AlignHCenter
         }
 
@@ -139,6 +138,16 @@ Page {
             Component.onCompleted: pegManager.addPegs()
         }
 
+        SoundLevel {
+            id: soundLevel
+
+            width: parent.width
+            height: parent.height * 0.1
+
+            x: 0
+            y: parent.height * 0.45
+
+        }
     }
 }
 
