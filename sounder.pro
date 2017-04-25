@@ -59,4 +59,5 @@ DISTFILES += \
     qml/pages/marks_green.png \
     qml/pages/marks_red.png \
     qml/pages/marks_transparent.png \
-    qml/pages/PegManager.qml
+    qml/pages/PegManager.qml \
+    qml/cover/sounder.png

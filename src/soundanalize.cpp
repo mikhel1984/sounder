@@ -3,6 +3,7 @@
 
 #define NOTE_SIZE 40
 #define EU_NOTES 12
+#define THRESHOUDL 5
 
 #define Pi 3.1415926535897932384626433832795028
 
@@ -52,11 +53,12 @@ void SoundAnalize::transform(qreal *data, unsigned n) {
         }
     }
 
-    lastNote = findMaximum();
+    int index = findMaximum();
+    if(index > -1) lastNote = index;
 }
 
 int SoundAnalize::findMaximum() {
-    qreal max = 0, amplituda;
+    qreal max = 0, amplituda, sum = 0;
     int res = 0;
 
     for(int i = 0; i < 3*NOTE_SIZE; ++i) {
@@ -65,9 +67,11 @@ int SoundAnalize::findMaximum() {
             max = amplituda;
             res = i;
         }
+        sum += amplituda;
     }
+    sum /= 3*NOTE_SIZE;
 
-    return res;
+    return max > THRESHOUDL*sum ? res : -1;
 }
 
 
