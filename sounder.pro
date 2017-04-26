@@ -49,7 +49,6 @@ HEADERS += \
     src/tuner.h
 
 DISTFILES += \
-    qml/pages/head_1.jpg \
     qml/pages/arrow_red.png \
     qml/pages/arrow_transparent.png \
     qml/pages/Arrow.qml \
@@ -61,4 +60,5 @@ DISTFILES += \
     qml/pages/marks_transparent.png \
     qml/pages/PegManager.qml \
     qml/cover/sounder.png \
-    qml/pages/SoundLevel.qml
+    qml/pages/SoundLevel.qml \
+    qml/pages/head_3.png

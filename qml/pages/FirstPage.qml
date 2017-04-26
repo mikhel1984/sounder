@@ -56,7 +56,8 @@ Page {
         }
 
         Image {
-            source: "head_1.jpg"
+            //source: "head_1.jpg"
+            source: "head_3.png"
             fillMode: Image.PreserveAspectFit
 
             anchors.fill: parent
@@ -68,7 +69,7 @@ Page {
 
             onNoteChanged: {
                 note.text = tuner.note
-                note.color = tuner.shift == 0 ? "green" : "white"
+                note.color = tuner.shift == 0 ? "green" : "red"
                 pegManager.updatePegs(tuner.frequency)
 
                 switch(tuner.shift) {
@@ -100,7 +101,7 @@ Page {
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
 
-            color: "white"
+            color: "red"
             font.bold: true
             font.pixelSize: Theme.fontSizeExtraLarge * 2
             horizontalAlignment: Text.AlignHCenter

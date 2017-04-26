@@ -22,9 +22,9 @@ Tuner::Tuner(QObject *parent)
         format = info.nearestFormat(format);
     }
 
-    qDebug() << "Rate: " << format.sampleRate();
-    qDebug() << "Channels: " << format.channelCount();
-    qDebug() << "Size: " << format.sampleSize();
+    //qDebug() << "Rate: " << format.sampleRate();
+    //qDebug() << "Channels: " << format.channelCount();
+    //qDebug() << "Size: " << format.sampleSize();
 
     // audio data analizator
     audioInfo = new AudioInfo(format, this);
