@@ -31,12 +31,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import Sounder 1.0
+
 
 
 Page {
     id: page
 
+    property double frequency: tuner.frequency
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.Portrait
@@ -46,7 +47,6 @@ Page {
         anchors.fill: parent
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-
         PullDownMenu {
             /*
             MenuItem {
@@ -55,41 +55,12 @@ Page {
             }*/
         }
 
-        Image {
-            //source: "head_1.jpg"
+        Image {            
             source: "head_3.png"
             fillMode: Image.PreserveAspectFit
 
             anchors.fill: parent
             z: -1
-        }
-
-        Tuner {
-            id: tuner
-
-            onNoteChanged: {
-                note.text = tuner.note
-                note.color = tuner.shift == 0 ? "green" : "red"
-                guitar.updatePegs(tuner.frequency)
-
-                switch(tuner.shift) {
-                case -1:
-                    upperArrow.signaling = false
-                    lowerArrow.signaling = true
-                    break;
-                case 0:
-                    upperArrow.signaling = false
-                    lowerArrow.signaling = false
-                    break;
-                case 1:
-                    upperArrow.signaling = true
-                    lowerArrow.signaling = false
-                    break;
-                }
-                soundLevel.volume = tuner.level
-
-            }
-
         }
 
         Text {
@@ -148,7 +119,31 @@ Page {
             x: 0
             y: parent.height * 0.45
 
+            volume: tuner.level
+
         }
     }
+
+    onFrequencyChanged: {
+        note.text = tuner.note
+        note.color = (tuner.shift == 0) ? "green" : "red"
+        guitar.updatePegs(frequency)
+
+        switch(tuner.shift) {
+        case -1:
+            upperArrow.signaling = false
+            lowerArrow.signaling = true
+            break;
+        case 0:
+            upperArrow.signaling = false
+            lowerArrow.signaling = false
+            break;
+        case 1:
+            upperArrow.signaling = true
+            lowerArrow.signaling = false
+            break;
+        }
+    }
+
 }
 
