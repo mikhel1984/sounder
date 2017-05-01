@@ -41,26 +41,25 @@ Item {
     }
 
     function centerFrequency(n) {
-        var freq
-        var c = 65.41
+        var freq = 65.41
         switch(n) {
         case 0:  // E
-            freq = c * Math.pow(2, 4.0/12)
+            freq *= Math.pow(2, 4.0/12)
             break;
         case 1:  // A
-            freq = c * Math.pow(2, 9.0/12)
+            freq *= Math.pow(2, 9.0/12)
             break;
         case 2:  // D
-            freq = c * Math.pow(2, 14.0/12)
+            freq *= Math.pow(2, 14.0/12)
             break;
         case 3:  // G
-            freq = c * Math.pow(2, 19.0/12)
+            freq *= Math.pow(2, 19.0/12)
             break;
         case 4:  // B
-            freq = c * Math.pow(2, 23.0/12)
+            freq *= Math.pow(2, 23.0/12)
             break;
         default:  // E
-            freq = c * Math.pow(2, 28.0/12)
+            freq *= Math.pow(2, 28.0/12)
             break;
         }
         return freq

@@ -61,4 +61,5 @@ DISTFILES += \
     qml/pages/PegManager.qml \
     qml/cover/sounder.png \
     qml/pages/SoundLevel.qml \
-    qml/pages/head_3.png
+    qml/pages/head_3.png \
+    qml/pages/GuitarPegs.qml

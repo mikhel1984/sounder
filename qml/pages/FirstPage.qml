@@ -70,7 +70,7 @@ Page {
             onNoteChanged: {
                 note.text = tuner.note
                 note.color = tuner.shift == 0 ? "green" : "red"
-                pegManager.updatePegs(tuner.frequency)
+                guitar.updatePegs(tuner.frequency)
 
                 switch(tuner.shift) {
                 case -1:
@@ -131,12 +131,12 @@ Page {
             y: parent.height - lowerArrow.height - parent.height / 8
         }
 
-        PegManager {
-            id: pegManager
+        GuitarPegs {
+            id: guitar
 
             head: parent
 
-            Component.onCompleted: pegManager.addPegs()
+            Component.onCompleted: guitar.addPegs()
         }
 
         SoundLevel {
