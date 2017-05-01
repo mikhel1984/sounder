@@ -6,7 +6,7 @@ Item {
 
     property var pegs: []
 
-    property int strings: 6
+    property int strings: 4
 
     function addPegs() {
         var diametr = Math.floor(head.width / 5)

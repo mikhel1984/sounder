@@ -48,11 +48,11 @@ Page {
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
-            /*
+
             MenuItem {
-                text: qsTr("Play guitar notes")
+                text: qsTr("Violine")
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
-            }*/
+            }
         }
 
         Image {            
@@ -63,43 +63,13 @@ Page {
             z: -1
         }
 
-        Text {
-            id: note
+        SoundLayer {
+            id: soundLayer
 
-            width: parent.width/4
-            height: parent.height/8
+            head: parent
+            source: tuner
 
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
 
-            color: "red"
-            font.bold: true
-            font.pixelSize: Theme.fontSizeExtraLarge * 2
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        Arrow {
-            id: upperArrow
-
-            upper: true
-
-            width: Math.floor(parent.width * 0.4)
-            height: Math.floor(parent.height / 6)
-
-            x: (parent.width-upperArrow.width) / 2
-            y: parent.height / 8
-        }
-
-        Arrow {
-            id: lowerArrow
-
-            upper: false
-
-            width: Math.floor(parent.width * 0.4)
-            height: Math.floor(parent.height / 6)
-
-            x: (parent.width - lowerArrow.width) / 2
-            y: parent.height - lowerArrow.height - parent.height / 8
         }
 
         GuitarPegs {
@@ -110,40 +80,9 @@ Page {
             Component.onCompleted: guitar.addPegs()
         }
 
-        SoundLevel {
-            id: soundLevel
-
-            width: parent.width
-            height: parent.height * 0.1
-
-            x: 0
-            y: parent.height * 0.45
-
-            volume: tuner.level
-
-        }
     }
 
-    onFrequencyChanged: {
-        note.text = tuner.note
-        note.color = (tuner.shift == 0) ? "green" : "red"
-        guitar.updatePegs(frequency)
-
-        switch(tuner.shift) {
-        case -1:
-            upperArrow.signaling = false
-            lowerArrow.signaling = true
-            break;
-        case 0:
-            upperArrow.signaling = false
-            lowerArrow.signaling = false
-            break;
-        case 1:
-            upperArrow.signaling = true
-            lowerArrow.signaling = false
-            break;
-        }
-    }
+    onFrequencyChanged: guitar.updatePegs(frequency)
 
 }
 

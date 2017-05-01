@@ -62,4 +62,7 @@ DISTFILES += \
     qml/cover/sounder.png \
     qml/pages/SoundLevel.qml \
     qml/pages/head_3.png \
-    qml/pages/GuitarPegs.qml
+    qml/pages/GuitarPegs.qml \
+    qml/pages/SoundLayer.qml \
+    qml/pages/violin.png \
+    qml/pages/ViolinPegs.qml

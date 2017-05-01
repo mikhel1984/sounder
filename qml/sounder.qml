@@ -35,6 +35,8 @@ import "pages"
 
 ApplicationWindow
 {
+    id: main
+
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations

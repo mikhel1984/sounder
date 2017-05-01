@@ -2,13 +2,9 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>SecondPage</name>
+    <name>FirstPage</name>
     <message>
-        <source>Nested Page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Item</source>
+        <source>Violine</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

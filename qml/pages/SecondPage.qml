@@ -35,27 +35,38 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
+    property double frequency: tuner.frequency
+
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
 
     SilicaListView {
-        id: listView
-        model: 20
         anchors.fill: parent
-        header: PageHeader {
-            title: qsTr("Nested Page")
-        }
-        delegate: BackgroundItem {
-            id: delegate
 
-            Label {
-                x: Theme.horizontalPageMargin
-                text: qsTr("Item") + " " + index
-                anchors.verticalCenter: parent.verticalCenter
-                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-            }
-            onClicked: console.log("Clicked " + index)
+        Image {
+            source: "violin.png"
+
+            width: parent.width
+            height: parent.height
+
+            z: -1
         }
-        VerticalScrollDecorator {}
+
+        SoundLayer {
+            id: soundLayer
+
+            head: parent
+            source: tuner
+        }
+
+        ViolinPegs {
+            id: violin
+
+            head: parent
+            Component.onCompleted:  violin.addPegs()
+        }
+
     }
+
+    onFrequencyChanged: violin.updatePegs(frequency)
 }
