@@ -1,7 +1,7 @@
 #include "soundanalize.h"
 #include <qmath.h>
 
-#define NOTE_SIZE 40
+#define NOTE_SIZE 50
 #define EU_NOTES 12
 #define THRESHOUDL 5
 
