@@ -68,6 +68,7 @@ Item {
     onFrequencyChanged: {
         note.text = source.note
         note.color = (source.shift == 0) ? "green" : "red"
+        //console.log(frequency)
 
         switch(source.shift) {
         case -1:

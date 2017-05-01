@@ -1,9 +1,9 @@
 #include "soundanalize.h"
 #include <qmath.h>
 
-#define NOTE_SIZE 50
+#define NOTE_SIZE 45
 #define EU_NOTES 12
-#define THRESHOUDL 5
+#define THRESHOUDL 7
 
 #define Pi 3.1415926535897932384626433832795028
 
@@ -69,7 +69,7 @@ int SoundAnalize::findMaximum() {
         }
         sum += amplituda;
     }
-    sum /= 3*NOTE_SIZE;
+    sum /= 3*NOTE_SIZE; // average value
 
     return max > THRESHOUDL*sum ? res : -1;
 }

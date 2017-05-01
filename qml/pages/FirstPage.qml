@@ -56,7 +56,7 @@ Page {
         }
 
         Image {            
-            source: "head_3.png"
+            source: "guitar.png"
             fillMode: Image.PreserveAspectFit
 
             anchors.fill: parent
