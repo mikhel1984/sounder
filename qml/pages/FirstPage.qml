@@ -50,7 +50,7 @@ Page {
         PullDownMenu {
 
             MenuItem {
-                text: qsTr("Violine")
+                text: qsTr("Violin")
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
         }

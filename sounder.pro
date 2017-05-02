@@ -41,7 +41,9 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/sounder-de.ts
+TRANSLATIONS += translations/sounder-de.ts \
+    translations/sounder-fr.ts \
+    translations/sounder-ru.ts
 
 HEADERS += \
     src/soundanalize.h \
@@ -65,4 +67,6 @@ DISTFILES += \
     qml/pages/GuitarPegs.qml \
     qml/pages/SoundLayer.qml \
     qml/pages/violin.png \
-    qml/pages/ViolinPegs.qml
+    qml/pages/ViolinPegs.qml \
+    translations/sounder-fr.ts \
+    translations/sounder-ru.ts

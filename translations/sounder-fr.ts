@@ -5,7 +5,7 @@
     <name>FirstPage</name>
     <message>
         <source>Violin</source>
-        <translation>Geige</translation>
+        <translation>Violon</translation>
     </message>
 </context>
 </TS>

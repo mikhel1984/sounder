@@ -4,7 +4,7 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Violine</source>
+        <source>Violin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
