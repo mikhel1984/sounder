@@ -4,10 +4,12 @@ Item {
 
     property int diametr: 20
 
+    // range of freqencies and central note
     property double lowBound: 20
     property double upBound: 20000
     property double center: 440
 
+    // current frequency
     property double frequency: 0
 
     SpriteSequence {

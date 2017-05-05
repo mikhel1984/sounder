@@ -48,13 +48,14 @@ Page {
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
-
+            // change instrument
             MenuItem {
                 text: qsTr("Violin")
                 onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
             }
         }
 
+        // wallpaper
         Image {            
             source: "guitar.png"
             fillMode: Image.PreserveAspectFit
@@ -63,15 +64,15 @@ Page {
             z: -1
         }
 
+        // arrows, label and sound level
         SoundLayer {
             id: soundLayer
 
             head: parent
             source: tuner
-
-
         }
 
+        // peg manager for guitar
         GuitarPegs {
             id: guitar
 

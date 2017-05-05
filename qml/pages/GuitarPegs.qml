@@ -8,6 +8,7 @@ Item {
 
     property int strings: 6
 
+    // generate and setup pegs according to image
     function addPegs() {
         var diametr = Math.floor(head.width / 5)
         var x_shift = head.width * 0.03
@@ -42,6 +43,7 @@ Item {
 
     }
 
+    // main frequency for each string
     function centerFrequency(n) {
         var freq = 65.41
         switch(n) {

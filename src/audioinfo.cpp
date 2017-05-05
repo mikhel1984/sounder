@@ -12,9 +12,10 @@ AudioInfo::AudioInfo(const QAudioFormat &format, QObject *parent)
     ,   m_level(0.0)
     ,   buffer(new qreal[BUFFER_SIZE])
 
-{
+{    
     analizator = new SoundAnalize(m_format.sampleRate());
 
+    // get maximum amplitude for current audio format
     switch (m_format.sampleSize()) {
     case 8:
         switch (m_format.sampleType()) {
@@ -51,16 +52,18 @@ AudioInfo::~AudioInfo()
     delete [] buffer;
 }
 
+// start reading
 void AudioInfo::start()
 {
     open(QIODevice::ReadWrite);
 }
-
+// stop reading
 void AudioInfo::stop()
 {
     close();
 }
 
+// not used in this programm
 qint64 AudioInfo::readData(char *data, qint64 maxlen)
 {
     Q_UNUSED(data)
@@ -69,10 +72,11 @@ qint64 AudioInfo::readData(char *data, qint64 maxlen)
     return 0;
 }
 
-
+// get audio data, perform analize
 qint64 AudioInfo::writeData(const char *data, qint64 len)
 {
     if (m_maxAmplitude) {
+        // frame parameters
         Q_ASSERT(m_format.sampleSize() % 8 == 0);
         const int channelBytes = m_format.sampleSize() / 8;
         const int sampleBytes = m_format.channelCount() * channelBytes;
@@ -86,6 +90,7 @@ qint64 AudioInfo::writeData(const char *data, qint64 len)
             for(int j = 0; j < m_format.channelCount(); ++j) {
                 quint16 value = 0;
 
+                // for each sample calculate its amplitude and save to buffer
                 if (m_format.sampleSize() == 8 && m_format.sampleType() == QAudioFormat::UnSignedInt) {
                     value = *reinterpret_cast<const quint8*>(ptr);
                     buffer[i] = qreal(value) / m_maxAmplitude;
@@ -108,20 +113,23 @@ qint64 AudioInfo::writeData(const char *data, qint64 len)
                     }
                 }
 
+                // find maximum
                 maxValue = qMax(value, maxValue);
+                // next pointer
                 ptr += channelBytes;
-
             }
         }
 
+        // get value
         maxValue = qMin(maxValue, m_maxAmplitude);
         m_level = qreal(maxValue) / m_maxAmplitude;
 
+        // perform Fourier transformation
         if(m_level > NOIZE_LEVEL)
             analizator->transform(buffer, numSamples);
     }
 
-    emit update();
+    emit update(); // done
     return len;
 }
 

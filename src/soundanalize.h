@@ -26,12 +26,12 @@ public:
     SoundAnalize(int rate);
     ~SoundAnalize();
 
-    // read the parameters of note
+    // getters
     QString getNote()       { return notes.at(lastNote)->name; }
     qreal   getFrequency()  { return notes.at(lastNote)->frequency; }
     int     getShift()      { return notes.at(lastNote)->shift; }
 
-    // Fourier transrormation of input data
+    // Fourier transrormation
     void transform(qreal* data, unsigned n);
 
 private:    
@@ -42,7 +42,7 @@ private:
 
     QVector<Sound*> notes; // list of possible notes
 
-    // searching maximum value
+    // searching the maximum value
     int  findMaximum();
 };
 

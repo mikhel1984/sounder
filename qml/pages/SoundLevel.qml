@@ -7,7 +7,6 @@ Item {
     property int levelHeight: Math.round(level.height * 0.3)
 
     property double volume: 1
-    //z: 1
 
     Rectangle {
         id: background

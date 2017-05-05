@@ -1,10 +1,11 @@
 import QtQuick 2.0
 
 Item {
+    // Arrows show the direction of frequency changing
+    // to get accurate note
 
-    property bool upper: true
-
-    property bool signaling: false
+    property bool upper: true       // upper or lower arrow relative to text label
+    property bool signaling: false  // should the arrow be active (red)
 
     SpriteSequence {
         id: arrow
@@ -26,6 +27,7 @@ Item {
     }
 
     onSignalingChanged: {
+        // change state
         if(signaling)
             arrow.jumpTo("signal")
         else

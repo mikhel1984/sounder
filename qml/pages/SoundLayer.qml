@@ -10,15 +10,13 @@ Item {
 
     property double frequency: source.frequency
 
+    // current note
     Text {
         id: note
 
         width: head.width/4
         height: head.height/8
 
-        //anchors.verticalCenter: head.verticalCenter
-        //anchors.horizontalCenter: head.horizontalCenter
-        //anchors.centerIn: parent
         x: (head.width - note.width) * 0.5
         y: (head.height - note.height) * 0.5
 
@@ -28,6 +26,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
     }
 
+    // arrows
     Arrow {
         id: upperArrow
 
@@ -39,7 +38,6 @@ Item {
         x: (head.width-upperArrow.width) / 2
         y: head.height / 8
     }
-
     Arrow {
         id: lowerArrow
 
@@ -52,6 +50,7 @@ Item {
         y: head.height - lowerArrow.height - head.height / 8
     }
 
+    // volume
     SoundLevel {
         id: soundLevel
 
@@ -65,10 +64,10 @@ Item {
 
     }
 
+    // change state
     onFrequencyChanged: {
         note.text = source.note
         note.color = (source.shift == 0) ? "green" : "red"
-        //console.log(frequency)
 
         switch(source.shift) {
         case -1:

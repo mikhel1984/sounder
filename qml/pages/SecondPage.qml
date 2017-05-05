@@ -43,6 +43,7 @@ Page {
     SilicaListView {
         anchors.fill: parent
 
+        // wallpaper
         Image {
             source: "violin.png"
 
@@ -52,6 +53,7 @@ Page {
             z: -1
         }
 
+        // arrows, label and sound level
         SoundLayer {
             id: soundLayer
 
@@ -59,6 +61,7 @@ Page {
             source: tuner
         }
 
+        // peg manager for violine
         ViolinPegs {
             id: violin
 
